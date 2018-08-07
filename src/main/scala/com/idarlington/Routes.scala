@@ -34,12 +34,12 @@ trait Routes {
             get {
               log.info("Getting all storage content")
               val content: Future[Map[String, String]] =
-                (storageRegion ? StorageActor.Get("")).mapTo[Map[String, String]]
+                (storageRegion ? Model.Get("")).mapTo[Map[String, String]]
               complete(content)
             },
             post {
               entity(as[Entity]) { content =>
-                (storageRegion ? StorageActor.Set(content.key, content.value))
+                (storageRegion ? Model.Set(content.key, content.value))
                   .mapTo[Done]
                 complete(StatusCodes.Created)
               }
@@ -48,7 +48,7 @@ trait Routes {
         path(Segment) { key =>
           concat(get {
             val value =
-              (storageRegion ? StorageActor.Get(key)).mapTo[Option[String]]
+              (storageRegion ? Model.Get(key)).mapTo[Option[String]]
             rejectEmptyResponse {
               complete(value)
             }

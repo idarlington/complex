@@ -1,6 +1,8 @@
 package com.idarlington
 
-import akka.actor.ActorSystem
+import akka.actor.{ ActorRef, ActorSystem }
+import akka.cluster.Cluster
+import akka.cluster.ddata.DistributedData
 import com.typesafe.config.ConfigFactory
 
 object ActorApp {
@@ -16,7 +18,9 @@ object ActorApp {
         .withFallback(ConfigFactory.load())
 
       val system = ActorSystem("ComplexApp", config)
-      new ClusterShardingRegion(system).clusterShardRegion
+      DistributedData(system).replicator
+      implicit val cluster: Cluster = Cluster(system)
+      /*new ClusterShardingRegion(system).clusterShardRegion*/
     }
   }
 

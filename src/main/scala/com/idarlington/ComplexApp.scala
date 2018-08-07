@@ -1,6 +1,7 @@
 package com.idarlington
 
 import akka.actor.{ ActorRef, ActorSystem, Props }
+import akka.cluster.ddata.DistributedData
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Route
 import akka.stream.ActorMaterializer
@@ -13,7 +14,8 @@ object ComplexApp extends App with Routes {
   implicit val system: ActorSystem = ActorSystem("ComplexApp")
   implicit val materializer: ActorMaterializer = ActorMaterializer()
 
-  val storageRegion = new ClusterShardingRegion(system).clusterShardRegion
+  /*val storageRegion = new ClusterShardingRegion(system).clusterShardRegion*/
+  val storageRegion = system.actorOf(ReplicatedStorage.props())
 
   lazy val routes: Route = storageRoutes
 

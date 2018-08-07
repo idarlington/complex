@@ -7,23 +7,9 @@ import akka.cluster.sharding.ShardRegion
 
 import scala.collection.mutable.Map
 import scala.util.Random
+import Model._
 
 object StorageActor {
-
-  trait Messages {
-    def key: String
-  }
-
-  object Messages {
-    def unapply(m: Messages) = Some(m.key)
-  }
-
-  case class Set(key: String, value: String) extends Messages
-  case class Get(key: String) extends Messages
-  case class Update(key: String, value: String)
-    extends Messages
-  case class Delete(key: String) extends Messages
-  case class GetContent()
 
   private val numberOfShards = 5
 
@@ -45,7 +31,6 @@ object StorageActor {
 }
 
 class StorageActor extends Actor with ActorLogging {
-  import StorageActor._
 
   var storage: Map[String, String] = Map.empty
   override def receive: Receive = {
