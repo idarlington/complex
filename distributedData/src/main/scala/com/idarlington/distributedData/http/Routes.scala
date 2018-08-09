@@ -1,7 +1,7 @@
 package com.idarlington.distributedData.http
 
 import akka.Done
-import akka.actor.{ ActorRef, ActorSystem }
+import akka.actor.{ActorRef, ActorSystem}
 import akka.event.Logging
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Route
@@ -9,7 +9,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.util.Timeout
 import com.idarlington.distributedData.cluster.ReplicatedStorage
 import com.idarlington.CirceSupport._
-import com.idarlington.{ Entity, Model }
+import com.idarlington.{Entity, Model}
 import scala.collection.mutable.Map
 import scala.concurrent.Future
 import scala.concurrent.duration._
@@ -20,12 +20,10 @@ import io.circe.generic.auto._
 trait Routes {
 
   implicit def system: ActorSystem
+
   implicit lazy val timeout = Timeout(5.seconds)
 
   lazy val log = Logging(system, classOf[ReplicatedStorage])
-
-  def replicator: ActorRef
-
   lazy val storageRoutes: Route =
     pathPrefix("store") {
       concat(
@@ -55,4 +53,6 @@ trait Routes {
           })
         })
     }
+
+  def replicator: ActorRef
 }

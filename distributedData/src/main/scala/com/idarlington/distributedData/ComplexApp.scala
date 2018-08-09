@@ -14,10 +14,8 @@ object ComplexApp extends App with Routes {
 
   implicit val system: ActorSystem = ActorSystem("ComplexApp")
   implicit val materializer: ActorMaterializer = ActorMaterializer()
-
-  val replicator = system.actorOf(ReplicatedStorage.props())
-
   lazy val routes: Route = storageRoutes
+  val replicator = system.actorOf(ReplicatedStorage.props())
 
   Http().bindAndHandle(routes, "localhost", 8080)
 
