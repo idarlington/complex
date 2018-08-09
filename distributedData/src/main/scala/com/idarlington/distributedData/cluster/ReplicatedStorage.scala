@@ -1,4 +1,4 @@
-package com.idarlington.cluster
+package com.idarlington.distributedData.cluster
 
 import akka.actor.{ Actor, ActorRef, Props }
 import akka.cluster.Cluster

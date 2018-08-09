@@ -1,10 +1,10 @@
-package com.idarlington
+package com.idarlington.clusterSharding
 
 import akka.actor.ActorSystem
-import com.idarlington.cluster.ClusterShardingRegion
+import com.idarlington.clusterSharding.cluster.ClusterShardingRegion
 import com.typesafe.config.ConfigFactory
 
-object ActorApp {
+object NodeApp {
 
   def main(args: Array[String]): Unit = {
     startup(args)

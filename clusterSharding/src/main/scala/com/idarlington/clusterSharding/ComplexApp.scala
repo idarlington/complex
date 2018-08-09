@@ -1,11 +1,11 @@
-package com.idarlington
+package com.idarlington.clusterSharding
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Route
 import akka.stream.ActorMaterializer
-import com.idarlington.cluster.ReplicatedStorage
-import com.idarlington.http.Routes
+import com.idarlington.clusterSharding.cluster.ClusterShardingRegion
+import com.idarlington.clusterSharding.http.Routes
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
@@ -15,7 +15,7 @@ object ComplexApp extends App with Routes {
   implicit val system: ActorSystem = ActorSystem("ComplexApp")
   implicit val materializer: ActorMaterializer = ActorMaterializer()
 
-  val replicator = system.actorOf(ReplicatedStorage.props())
+  val storageRegion = new ClusterShardingRegion(system).clusterShardRegion
 
   lazy val routes: Route = storageRoutes
 

@@ -1,4 +1,4 @@
-package com.idarlington.cluster
+package com.idarlington.clusterSharding.cluster
 
 import akka.Done
 import akka.actor.{ Actor, ActorLogging, Props }

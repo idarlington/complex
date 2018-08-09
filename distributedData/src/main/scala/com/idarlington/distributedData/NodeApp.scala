@@ -1,4 +1,4 @@
-package com.idarlington
+package com.idarlington.distributedData
 
 import akka.actor.ActorSystem
 import akka.cluster.Cluster
