@@ -1,21 +1,22 @@
-package com.idarlington
+package com.idarlington.http
 
-import akka.actor.{ ActorRef, ActorSystem }
-import akka.http.scaladsl.model.StatusCodes
-import akka.http.scaladsl.server.Route
-import akka.http.scaladsl.server.Directives._
-import akka.pattern.ask
-import CirceSupport._
 import akka.Done
+import akka.actor.{ ActorRef, ActorSystem }
+import akka.pattern.ask
 import akka.event.Logging
+import akka.http.scaladsl.model.StatusCodes
+import akka.http.scaladsl.server.Directives._
+import akka.http.scaladsl.server.Route
 import akka.util.Timeout
-
-import scala.concurrent.duration._
+import com.idarlington.cluster.StorageActor
+import com.idarlington.{ Entity, Model }
+import com.idarlington.CirceSupport._
 import io.circe.generic.auto._
 
 import scala.collection.mutable.Map
-
 import scala.concurrent.Future
+
+import scala.concurrent.duration._
 
 trait Routes {
 

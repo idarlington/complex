@@ -1,9 +1,10 @@
-package com.idarlington
+package com.idarlington.cluster
 
 import akka.actor.{ Actor, ActorRef, Props }
 import akka.cluster.Cluster
 import akka.cluster.ddata.Replicator._
 import akka.cluster.ddata.{ DistributedData, LWWMap, LWWMapKey }
+import com.idarlington.Model
 
 object ReplicatedStorage {
   private final case class Request(key: String, replyTo: ActorRef)

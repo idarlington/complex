@@ -1,4 +1,4 @@
-package com.idarlington
+package com.idarlington.cluster
 
 import akka.actor.{ ActorRef, ActorSystem }
 import akka.cluster.sharding.{ ClusterSharding, ClusterShardingSettings }

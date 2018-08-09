@@ -1,22 +1,21 @@
-package com.idarlington
+package com.idarlington.cluster
 
 import akka.Done
 import akka.actor.{ Actor, ActorLogging, Props }
-import KeyIdentifier._
 import akka.cluster.sharding.ShardRegion
+import com.idarlington.Model._
 
 import scala.collection.mutable.Map
-import scala.util.Random
-import Model._
 
 object StorageActor {
 
   private val numberOfShards = 5
+  private val numberOfPartitions = 5
 
   def props: Props = Props[StorageActor]
 
   def entity(key: String): Int = {
-    stringUnicodeDecimal(key).map(identifier).getOrElse(Random.nextInt(5))
+    math.abs(key.hashCode) % numberOfPartitions
   }
 
   val extractShardId: ShardRegion.ExtractShardId = {
