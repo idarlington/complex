@@ -1,7 +1,7 @@
-package com.idarlington
+package com.idarlington.clusterSharding.cluster
 
-import akka.actor.{ ActorRef, ActorSystem }
-import akka.cluster.sharding.{ ClusterSharding, ClusterShardingSettings }
+import akka.actor.{ActorRef, ActorSystem}
+import akka.cluster.sharding.{ClusterSharding, ClusterShardingSettings}
 
 class ClusterShardingRegion(actorSystem: ActorSystem) {
   val clusterShardRegion: ActorRef = ClusterSharding(actorSystem).start(
