@@ -12,21 +12,34 @@ lazy val root = (project in file("."))
     name := "complex",
     libraryDependencies ++= commonDependencies
   )
-
-
-lazy val clusterSharding = project.settings(
-  name := "clusterSharding",
-  libraryDependencies ++= commonDependencies ++ Seq(
-    dependencies.akkaClusterSharding
+  .aggregate(
+    common,
+    clusterSharding,
+    distributedData
   )
-).dependsOn(root)
 
-lazy val distributedData = project.settings(
-  name := "distributedData",
-  libraryDependencies ++= commonDependencies ++ Seq(
-    dependencies.akkaDistributedData
+lazy val common = project.settings(
+  name := "common",
+  libraryDependencies ++= commonDependencies
+)
+
+lazy val clusterSharding = project
+  .settings(
+    name := "clusterSharding",
+    libraryDependencies ++= commonDependencies ++ Seq(
+      dependencies.akkaClusterSharding
+    )
   )
-).dependsOn(root)
+  .dependsOn(common)
+
+lazy val distributedData = project
+  .settings(
+    name := "distributedData",
+    libraryDependencies ++= commonDependencies ++ Seq(
+      dependencies.akkaDistributedData
+    )
+  )
+  .dependsOn(common)
 
 lazy val commonDependencies = Seq(
   dependencies.akkaHttp,
