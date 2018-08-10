@@ -1,7 +1,7 @@
 package com.idarlington.clusterSharding.cluster
 
 import akka.Done
-import akka.actor.{Actor, ActorLogging, Props}
+import akka.actor.{ Actor, ActorLogging, Props }
 import akka.cluster.sharding.ShardRegion
 import com.idarlington.Model._
 
@@ -14,7 +14,7 @@ object StorageActor {
       (entity(key) % numberOfShards).toString
   }
   val extractEntityId: ShardRegion.ExtractEntityId = {
-    case msg@Messages(key) =>
+    case msg @ Messages(key) =>
       (entity(key).toString, msg)
   }
   private val numberOfShards = 5
