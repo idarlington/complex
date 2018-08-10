@@ -1,7 +1,7 @@
 package com.idarlington.distributedData.http
 
 import akka.Done
-import akka.actor.{ActorRef, ActorSystem}
+import akka.actor.{ ActorRef, ActorSystem }
 import akka.event.Logging
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Route
@@ -9,7 +9,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.util.Timeout
 import com.idarlington.distributedData.cluster.ReplicatedStorage
 import com.idarlington.CirceSupport._
-import com.idarlington.{Entity, Model}
+import com.idarlington.{ Entity, Model }
 import scala.collection.mutable.Map
 import scala.concurrent.Future
 import scala.concurrent.duration._
