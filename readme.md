@@ -7,8 +7,8 @@ This project creates a distributed key-value store using various akka clustering
 
 Currently, key-value stores have been created with
 
-- [cluster sharding]()
-- [distributed data]()
+- [cluster sharding](https://doc.akka.io/docs/akka/2.5/cluster-sharding.html)
+- [distributed data](https://doc.akka.io/docs/akka/2.5/distributed-data.html)
 
 ## Running the application
 
@@ -60,5 +60,5 @@ curl -d '{"key": "country", "value": "Nigeria"}' -H "Content-type: application/j
 
 ### Accessing stored values by key
 ``` bash
-curl localhost:8080/store/country
+curl http://localhost:8080/store/country
 ```
