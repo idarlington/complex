@@ -3,7 +3,7 @@
 > Why make it simple when it can be *complex*
 > ... 10x dev
 
-This project tries to create a distributed key-value store using various akka clustering technologies. An akka http server is used as the interface to the key-store which is stored on the cluster.
+This project creates a distributed key-value store using various akka clustering technologies. An akka http server is used as the interface to the key-store which is stored on the cluster.
 
 Currently, key-value stores have been created with
 
@@ -49,3 +49,5 @@ sbt clusterSharding/runMain com.idarlington.clusterSharding.ComplexApp
 sbt distributedData/runMain
 com.idarlington.istributedData.ComplexApp
 ```
+
+###

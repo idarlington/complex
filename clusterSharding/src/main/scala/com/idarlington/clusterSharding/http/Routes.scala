@@ -29,12 +29,6 @@ trait Routes {
       concat(
         pathEnd {
           concat(
-            get {
-              log.info("Getting all storage content")
-              val content: Future[Map[String, String]] =
-                (storageRegion ? Model.Get("")).mapTo[Map[String, String]]
-              complete(content)
-            },
             post {
               entity(as[Entity]) { content =>
                 (storageRegion ? Model.Set(content.key, content.value))
