@@ -50,4 +50,15 @@ sbt distributedData/runMain
 com.idarlington.istributedData.ComplexApp
 ```
 
-###
+## Using the key value store
+
+### Posting values
+
+``` bash
+curl -d '{"key": "country", "value": "Nigeria"}' -H "Content-type: application/json" -X POST http://localhost:8080
+```
+
+### Accessing stored values by key
+``` bash
+curl localhost:8080/store/country
+```
