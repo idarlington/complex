@@ -14,10 +14,10 @@ import scala.concurrent.duration.Duration
 
 object ComplexApp extends App with Routes {
 
-  implicit val system: ActorSystem = ActorSystem("ComplexApp")
+  implicit val system: ActorSystem             = ActorSystem("ComplexApp")
   implicit val materializer: ActorMaterializer = ActorMaterializer()
-  lazy val routes: Route = storageRoutes ~ SwaggerDocService.routes
-  val storageRegion = new ClusterShardingRegion(system).clusterShardRegion
+  lazy val routes: Route                       = storageRoutes ~ SwaggerDocService.routes
+  val storageRegion                            = new ClusterShardingRegion(system).clusterShardRegion
 
   Http().bindAndHandle(routes, "localhost", 8080)
 
