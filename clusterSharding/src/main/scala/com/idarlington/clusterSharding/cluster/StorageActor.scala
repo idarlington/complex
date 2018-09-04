@@ -6,6 +6,7 @@ import akka.cluster.sharding.ShardRegion
 import com.idarlington.Model._
 
 import scala.collection.mutable.Map
+import scala.concurrent.Await
 
 object StorageActor {
 

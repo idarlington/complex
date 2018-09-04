@@ -17,7 +17,6 @@ import scala.concurrent.Future
  * import CirceSupport._
  * import io.circe.generic.auto._
  */
-case class Entity(key: String, value: String)
 
 object CirceSupport {
   private def jsonContentTypes: List[ContentTypeRange] =

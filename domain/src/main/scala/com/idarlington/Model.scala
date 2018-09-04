@@ -1,5 +1,7 @@
 package com.idarlington
 
+case class Entity(key: String, value: String)
+
 object Model {
 
   trait Messages {

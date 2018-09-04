@@ -47,7 +47,7 @@ sbt clusterSharding/runMain com.idarlington.clusterSharding.ComplexApp
 
 ``` bash
 sbt distributedData/runMain
-com.idarlington.istributedData.ComplexApp
+com.idarlington.distributedData.ComplexApp
 ```
 
 ## Using the key value store
@@ -55,7 +55,7 @@ com.idarlington.istributedData.ComplexApp
 ### Posting values
 
 ``` bash
-curl -d '{"key": "country", "value": "Nigeria"}' -H "Content-type: application/json" -X POST http://localhost:8080
+curl -d '{"key": "country", "value": "Nigeria"}' -H "Content-type: application/json" -X POST http://localhost:8080/store
 ```
 
 ### Accessing stored values by key

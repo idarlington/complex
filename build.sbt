@@ -47,7 +47,8 @@ lazy val commonDependencies = Seq(
   dependencies.akkaCluster,
   dependencies.circeCore,
   dependencies.circeGeneric,
-  dependencies.circeParser
+  dependencies.circeParser,
+  dependencies.swaggerAkkaHttp
 )
 
 lazy val dependencies =
@@ -55,6 +56,7 @@ lazy val dependencies =
     val akkaHttpVersion = "10.1.1"
     val akkaVersion = "2.5.13"
     val circeVersion = "0.9.3"
+    val swaggerVersion = "1.0.0"
 
     val akkaHttp = "com.typesafe.akka" %% "akka-http" % akkaHttpVersion
     val akkaHttpSprayJson = "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion
@@ -66,6 +68,7 @@ lazy val dependencies =
     val circeCore = "io.circe" %% "circe-core" % circeVersion
     val circeGeneric = "io.circe" %% "circe-generic" % circeVersion
     val circeParser = "io.circe" %% "circe-parser" % circeVersion
+    val swaggerAkkaHttp = "com.github.swagger-akka-http" %% "swagger-akka-http" % swaggerVersion
     val akkHTTPTestKit = "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % Test
     val akkaTestKit = "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test
     val akkaStreamTestKit = "com.typesafe.akka" %% "akka-stream-testkit" % akkaVersion % Test
